@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anupam Chowdhury - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" xintegrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'slide-up': 'slide-up 0.6s ease-out',
+                        'fade-in': 'fade-in 0.8s ease-out',
+                        'bounce-slow': 'bounce 3s infinite',
+                    },
+                    backdropBlur: {
+                        xs: '2px',
+                    }
+                }
+            }
+        }
+        
+        // Set theme on initial load
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark')
+        } else {
+          document.documentElement.classList.remove('dark')
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes glow {
+            from { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+            to { box-shadow: 0 0 30px rgba(59, 130, 246, 0.6), 0 0 40px rgba(59, 130, 246, 0.3); }
+        }
+        
+        @keyframes slide-up {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .dark .glass-card {
+            background: rgba(30, 41, 59, 0.3);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .section-title {
+            position: relative;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            border-radius: 2px;
+        }
+
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-hover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s;
+        }
+        
+        .card-hover:hover::before {
+            left: 100%;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .dark .card-hover:hover {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .social-icon {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px) scale(1.1);
+        }
+        
+        .social-icon:hover i {
+            color: #3b82f6;
+        }
+        
+        .dark .social-icon:hover i {
+            color: #60a5fa;
+        }
+
+        .hero-bg {
+            background: radial-gradient(ellipse at top, rgba(59, 130, 246, 0.1), transparent 50%),
+                        radial-gradient(ellipse at bottom, rgba(139, 92, 246, 0.1), transparent 50%);
+        }
+
+        .dark .hero-bg {
+            background: radial-gradient(ellipse at top, rgba(59, 130, 246, 0.05), transparent 50%),
+                        radial-gradient(ellipse at bottom, rgba(139, 92, 246, 0.05), transparent 50%);
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.05));
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .dark .skill-card {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.02));
+            border: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        .skill-card:hover {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.1));
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2);
+        }
+
+        .nav-link {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .floating-shapes::before,
+        .floating-shapes::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .floating-shapes::before {
+            width: 200px;
+            height: 200px;
+            top: 10%;
+            right: 10%;
+            animation-delay: -2s;
+        }
+
+        .floating-shapes::after {
+            width: 150px;
+            height: 150px;
+            bottom: 20%;
+            left: 5%;
+            animation-delay: -4s;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 text-gray-800 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 dark:text-gray-200 transition-all duration-500 min-h-screen">
+
+    <!-- Floating Background Shapes -->
+    <div class="floating-shapes fixed inset-0 -z-10"></div>
+
+    <!-- Header & Navigation -->
+    <header class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border-b border-white/20 dark:border-slate-700/50 sticky top-0 z-50 transition-all duration-300">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300">
+                Anupam Chowdhury
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="nav-link text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition duration-300 font-medium">About</a>
+                <a href="#experience" class="nav-link text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition duration-300 font-medium">Experience</a>
+                <a href="#projects" class="nav-link text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition duration-300 font-medium">Projects</a>
+                <a href="#skills" class="nav-link text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition duration-300 font-medium">Skills</a>
+                <button id="theme-toggle" class="p-2 rounded-full bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-slate-700 hover:text-blue-600 dark:hover:text-blue-400 focus:outline-none transition-all duration-300 hover:scale-110">
+                    <i id="theme-toggle-icon" class="fas fa-moon fa-lg"></i>
+                </button>
+            </div>
+            <div class="md:hidden flex items-center space-x-4">
+                 <button id="mobile-theme-toggle" class="p-2 rounded-full bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-gray-400 focus:outline-none hover:scale-110 transition-transform duration-300">
+                    <i id="mobile-theme-toggle-icon" class="fas fa-moon"></i>
+                </button>
+                <button id="mobile-menu-button" class="text-gray-600 dark:text-gray-300 focus:outline-none hover:scale-110 transition-transform duration-300">
+                    <i class="fas fa-bars fa-lg"></i>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md">
+            <a href="#about" class="block py-3 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 border-b border-gray-100 dark:border-slate-700">About</a>
+            <a href="#experience" class="block py-3 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 border-b border-gray-100 dark:border-slate-700">Experience</a>
+            <a href="#projects" class="block py-3 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 border-b border-gray-100 dark:border-slate-700">Projects</a>
+            <a href="#skills" class="block py-3 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Skills</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <!-- Hero/Introduction Section -->
+        <section id="hero" class="hero-bg flex flex-col-reverse md:flex-row items-center my-12 md:my-24 relative overflow-hidden">
+            <div class="md:w-3/5 text-center md:text-left animate-slide-up">
+                <div class="mb-6">
+                    <span class="inline-block px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 text-blue-800 dark:text-blue-200 text-sm font-semibold rounded-full border border-blue-200 dark:border-blue-700/50 mb-4">
+                        👋 Welcome to my portfolio
+                    </span>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-extrabold text-gray-900 dark:text-white mb-4 leading-tight">
+                    <span class="gradient-text">Anupam</span><br>
+                    <span class="text-gray-700 dark:text-gray-300">Chowdhury</span>
+                </h1>
+                <div class="flex items-center justify-center md:justify-start mb-6">
+                    <div class="w-1 h-8 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full mr-4"></div>
+                    <p class="text-xl md:text-2xl text-blue-600 dark:text-blue-400 font-semibold">Electrical & Electronic Engineer</p>
+                </div>
+                <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl leading-relaxed">
+                    A passionate EEE graduate from IIUC, dedicated to <span class="text-blue-600 dark:text-blue-400 font-semibold">enhancing grid resiliency</span> and exploring innovative <span class="text-purple-600 dark:text-purple-400 font-semibold">renewable energy solutions</span>. Expert in MATLAB, COMSOL, and quantum mechanics simulations.
+                </p>
+                <div class="flex justify-center md:justify-start space-x-6 mb-10">
+                    <a href="mailto:anupam.eee.5@gmail.com" class="social-icon group" title="Email">
+                        <div class="p-3 bg-white dark:bg-slate-800 rounded-full shadow-lg group-hover:shadow-blue-500/25 transition-all duration-300">
+                            <i class="fas fa-envelope fa-xl text-gray-600 dark:text-gray-400"></i>
+                        </div>
+                    </a>
+                    <a href="#" target="_blank" class="social-icon group" title="Google Scholar">
+                        <div class="p-3 bg-white dark:bg-slate-800 rounded-full shadow-lg group-hover:shadow-blue-500/25 transition-all duration-300">
+                            <i class="fas fa-graduation-cap fa-xl text-gray-600 dark:text-gray-400"></i>
+                        </div>
+                    </a>
+                    <a href="#" target="_blank" class="social-icon group" title="GitHub">
+                        <div class="p-3 bg-white dark:bg-slate-800 rounded-full shadow-lg group-hover:shadow-blue-500/25 transition-all duration-300">
+                            <i class="fab fa-github fa-xl text-gray-600 dark:text-gray-400"></i>
+                        </div>
+                    </a>
+                    <a href="#" target="_blank" class="social-icon group" title="LinkedIn">
+                        <div class="p-3 bg-white dark:bg-slate-800 rounded-full shadow-lg group-hover:shadow-blue-500/25 transition-all duration-300">
+                            <i class="fab fa-linkedin fa-xl text-gray-600 dark:text-gray-400"></i>
+                        </div>
+                    </a>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <a href="#" class="group bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold py-4 px-8 rounded-2xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 inline-flex items-center justify-center shadow-2xl hover:shadow-blue-500/50 transform hover:-translate-y-1">
+                        <i class="fas fa-download mr-3 group-hover:animate-bounce"></i> 
+                        Download CV
+                    </a>
+                    <a href="#projects" class="bg-white dark:bg-slate-800 text-gray-900 dark:text-white font-bold py-4 px-8 rounded-2xl border-2 border-gray-200 dark:border-slate-600 hover:border-blue-500 dark:hover:border-blue-400 transition-all duration-300 inline-flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                        <i class="fas fa-eye mr-3"></i> 
+                        View Projects
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-2/5 mb-12 md:mb-0 flex justify-center animate-float">
+                <div class="relative">
+                    <div class="absolute -inset-4 bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400 rounded-full blur-2xl opacity-30 animate-pulse"></div>
+                    <div class="absolute -inset-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full blur-xl opacity-50"></div>
+                    <img src="https://placehold.co/300x300/3b82f6/ffffff?text=AC" alt="Anupam Chowdhury" class="rounded-full shadow-2xl w-56 h-56 md:w-72 md:h-72 object-cover relative border-4 border-white dark:border-slate-700 animate-glow">
+                    <div class="absolute -bottom-4 -right-4 bg-gradient-to-r from-green-400 to-blue-500 text-white p-3 rounded-full shadow-xl animate-bounce-slow">
+                        <i class="fas fa-bolt fa-lg"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About & Research Section -->
+        <section id="about" class="mb-24 scroll-mt-24 animate-fade-in">
+             <h2 class="text-4xl font-bold section-title text-gray-900 dark:text-white">About & Research</h2>
+             <div class="glass-card p-8 md:p-10 rounded-3xl shadow-2xl backdrop-blur-xl border border-white/20 dark:border-slate-700/50">
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+                        <div class="w-2 h-8 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full mr-4"></div>
+                        Thesis Research
+                    </h3>
+                    <div class="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 border-l-4 border-gradient-to-b border-blue-500 pl-6 py-4 rounded-r-xl mb-6">
+                        <p class="text-lg font-semibold text-gray-900 dark:text-white mb-2">A case study on micro-grid based operational framework for grid resiliency enhancement in Bangladesh</p>
+                        <div class="flex flex-wrap gap-2 mt-3">
+                            <span class="bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-300 px-3 py-1 rounded-full text-sm font-medium">Micro-grid</span>
+                            <span class="bg-purple-100 dark:bg-purple-900/50 text-purple-800 dark:text-purple-300 px-3 py-1 rounded-full text-sm font-medium">Islanding</span>
+                            <span class="bg-cyan-100 dark:bg-cyan-900/50 text-cyan-800 dark:text-cyan-300 px-3 py-1 rounded-full text-sm font-medium">BESS</span>
+                            <span class="bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 px-3 py-1 rounded-full text-sm font-medium">Resilience</span>
+                            <span class="bg-orange-100 dark:bg-orange-900/50 text-orange-800 dark:text-orange-300 px-3 py-1 rounded-full text-sm font-medium">Framework</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+                        <div class="w-2 h-8 bg-gradient-to-b from-purple-500 to-pink-500 rounded-full mr-4"></div>
+                        Research Interests
+                    </h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900/30 dark:to-blue-800/30 p-4 rounded-xl text-center border border-blue-200 dark:border-blue-700/50 hover:scale-105 transition-transform duration-300">
+                            <i class="fas fa-bolt text-2xl text-blue-600 dark:text-blue-400 mb-2"></i>
+                            <span class="text-blue-900 dark:text-blue-200 font-semibold text-sm">Grid Resilience</span>
+                        </div>
+                        <div class="bg-gradient-to-br from-purple-100 to-purple-200 dark:from-purple-900/30 dark:to-purple-800/30 p-4 rounded-xl text-center border border-purple-200 dark:border-purple-700/50 hover:scale-105 transition-transform duration-300">
+                            <i class="fas fa-network-wired text-2xl text-purple-600 dark:text-purple-400 mb-2"></i>
+                            <span class="text-purple-900 dark:text-purple-200 font-semibold text-sm">Microgrids</span>
+                        </div>
+                        <div class="bg-gradient-to-br from-green-100 to-green-200 dark:from-green-900/30 dark:to-green-800/30 p-4 rounded-xl text-center border border-green-200 dark:border-green-700/50 hover:scale-105 transition-transform duration-300">
+                            <i class="fas fa-leaf text-2xl text-green-600 dark:text-green-400 mb-2"></i>
+                            <span class="text-green-900 dark:text-green-200 font-semibold text-sm">Renewable Energy</span>
+                        </div>
+                        <div class="bg-gradient-to-br from-indigo-100 to-indigo-200 dark:from-indigo-900/30 dark:to-indigo-800/30 p-4 rounded-xl text-center border border-indigo-200 dark:border-indigo-700/50 hover:scale-105 transition-transform duration-300">
+                            <i class="fas fa-atom text-2xl text-indigo-600 dark:text-indigo-400 mb-2"></i>
+                            <span class="text-indigo-900 dark:text-indigo-200 font-semibold text-sm">Quantum Mechanics</span>
+                        </div>
+                    </div>
+                </div>
+             </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="mb-24 scroll-mt-24">
+            <h2 class="text-4xl font-bold section-title text-gray-900 dark:text-white">Professional Experience</h2>
+            <div class="space-y-8">
+                <div class="glass-card p-8 rounded-3xl shadow-xl card-hover border border-white/20 dark:border-slate-700/50">
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0">
+                            <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-flask text-white text-lg"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Research Assistantship</h3>
+                            <p class="text-blue-600 dark:text-blue-400 font-semibold mb-1">Mahdy's Research Academy</p>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm mb-4 flex items-center">
+                                <i class="fas fa-user-tie mr-2"></i>
+                                Advisor: Dr. Mahady Rahman | 
+                                <i class="fas fa-calendar ml-2 mr-2"></i>
+                                2024 - 2025
+                            </p>
+                            <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mr-3 mt-1 flex-shrink-0"></i>
+                                    Explored wave-based quantum mechanics and density function theory.
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mr-3 mt-1 flex-shrink-0"></i>
+                                    Gained hands-on expertise with COMSOL, Quantum Espresso, and Mathematica.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass-card p-8 rounded-3xl shadow-xl card-hover border border-white/20 dark:border-slate-700/50">
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0">
+                            <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-university text-white text-lg"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Undergraduate Research Assistant</h3>
+                            <p class="text-purple-600 dark:text-purple-400 font-semibold mb-1">IIUC (Rashidul's Lab)</p>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm mb-4 flex items-center">
+                                <i class="fas fa-user-tie mr-2"></i>
+                                Advisor: Assoc. Prof. Engr. Md. Rashidul Islam | 
+                                <i class="fas fa-calendar ml-2 mr-2"></i>
+                                2022 - 2024
+                            </p>
+                            <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mr-3 mt-1 flex-shrink-0"></i>
+                                    Investigated microgrid frameworks to improve Bangladesh's grid resilience.
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mr-3 mt-1 flex-shrink-0"></i>
+                                    Modeled PV systems, MPPT, and battery storage in MATLAB.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass-card p-8 rounded-3xl shadow-xl card-hover border border-white/20 dark:border-slate-700/50">
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0">
+                            <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-industry text-white text-lg"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Intern</h3>
+                            <p class="text-orange-600 dark:text-orange-400 font-semibold mb-1">General Electric Manufacturing Company Ltd. (GEMCO)</p>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm mb-4 flex items-center">
+                                <i class="fas fa-calendar mr-2"></i>
+                                2024
+                            </p>
+                            <ul class="space-y-2 text-gray-700 dark:text-gray-300">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mr-3 mt-1 flex-shrink-0"></i>
+                                    Gained hands-on experience in transformer manufacturing and quality assurance testing.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="mb-24 scroll-mt-24">
+            <h2 class="text-4xl font-bold section-title text-gray-900 dark:text-white">Featured Projects</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project Card 1 -->
+                <div class="glass-card p-6 rounded-3xl shadow-xl card-hover border border-white/20 dark:border-slate-700/50 flex flex-col">
+                    <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-heartbeat text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">ECG Signal Enhancement</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4 flex-grow">Designed a band-pass FIR filter in MATLAB to improve ECG signal quality by eliminating noise.</p>
+                    <a href="#" class="text-blue-500 dark:text-blue-400 font-semibold hover:underline mt-auto self-start group">
+                        Learn More <i class="fas fa-arrow-right ml-1 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+                <!-- Project Card 2 -->
+                <div class="glass-card p-6 rounded-3xl shadow-xl card-hover border border-white/20 dark:border-slate-700/50 flex flex-col">
+                    <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-teal-500 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-traffic-light text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">Intelligent Traffic Signal</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4 flex-grow">Developed an Arduino-based automated traffic control system to minimize urban congestion.</p>
+                    <a href="#" class="text-green-500 dark:text-green-400 font-semibold hover:underline mt-auto self-start group">
+                        Learn More <i class="fas fa-arrow-right ml-1 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+                <!-- Project Card 3 -->
+                <div class="glass-card p-6 rounded-3xl shadow-xl card-hover border border-white/20 dark:border-slate-700/50 flex flex-col">
+                    <div class="w-12 h-12 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-sitemap text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">CMOS Half-Adder Design</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4 flex-grow">Constructed and simulated a half-adder circuit using Cadence Virtuoso to ensure functional reliability.</p>
+                    <a href="#" class="text-orange-500 dark:text-orange-400 font-semibold hover:underline mt-auto self-start group">
+                        Learn More <i class="fas fa-arrow-right ml-1 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="scroll-mt-24">
+            <h2 class="text-4xl font-bold section-title text-gray-900 dark:text-white">Technical Skills</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                <div class="skill-card p-4 rounded-xl text-center card-hover">
+                    <i class="fas fa-code text-3xl text-blue-500 dark:text-blue-400 mb-2"></i>
+                    <h3 class="font-semibold text-gray-900 dark:text-white">MATLAB</h3>
+                </div>
+                <div class="skill-card p-4 rounded-xl text-center card-hover">
+                    <i class="fas fa-microchip text-3xl text-purple-500 dark:text-purple-400 mb-2"></i>
+                    <h3 class="font-semibold text-gray-900 dark:text-white">COMSOL</h3>
+                </div>
+                <div class="skill-card p-4 rounded-xl text-center card-hover">
+                    <i class="fas fa-atom text-3xl text-cyan-500 dark:text-cyan-400 mb-2"></i>
+                    <h3 class="font-semibold text-gray-900 dark:text-white">Quantum Espresso</h3>
+                </div>
+                <div class="skill-card p-4 rounded-xl text-center card-hover">
+                    <i class="fas fa-sitemap text-3xl text-green-500 dark:text-green-400 mb-2"></i>
+                    <h3 class="font-semibold text-gray-900 dark:text-white">Cadence</h3>
+                </div>
+                <div class="skill-card p-4 rounded-xl text-center card-hover">
+                    <i class="fab fa-python text-3xl text-yellow-500 dark:text-yellow-400 mb-2"></i>
+                    <h3 class="font-semibold text-gray-900 dark:text-white">Python</h3>
+                </div>
+                <div class="skill-card p-4 rounded-xl text-center card-hover">
+                    <i class="fas fa-file-code text-3xl text-red-500 dark:text-red-400 mb-2"></i>
+                    <h3 class="font-semibold text-gray-900 dark:text-white">C++</h3>
+                </div>
+                <div class="skill-card p-4 rounded-xl text-center card-hover">
+                    <i class="fas fa-superscript text-3xl text-indigo-500 dark:text-indigo-400 mb-2"></i>
+                    <h3 class="font-semibold text-gray-900 dark:text-white">Mathematica</h3>
+                </div>
+                <div class="skill-card p-4 rounded-xl text-center card-hover">
+                    <i class="fas fa-file-alt text-3xl text-slate-500 dark:text-slate-400 mb-2"></i>
+                    <h3 class="font-semibold text-gray-900 dark:text-white">LaTeX</h3>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="mt-24 border-t border-white/10 dark:border-slate-700/50">
+        <div class="container mx-auto px-6 py-8 text-center text-gray-600 dark:text-gray-400">
+            <p class="mb-4 text-lg">Let's connect!</p>
+            <div class="flex justify-center space-x-6 mb-8">
+                <a href="mailto:anupam.eee.5@gmail.com" class="social-icon group" title="Email">
+                    <i class="fas fa-envelope fa-2x text-gray-500 dark:text-gray-400"></i>
+                </a>
+                <a href="#" target="_blank" class="social-icon group" title="Google Scholar">
+                    <i class="fas fa-graduation-cap fa-2x text-gray-500 dark:text-gray-400"></i>
+                </a>
+                <a href="#" target="_blank" class="social-icon group" title="GitHub">
+                    <i class="fab fa-github fa-2x text-gray-500 dark:text-gray-400"></i>
+                </a>
+                <a href="#" target="_blank" class="social-icon group" title="LinkedIn">
+                    <i class="fab fa-linkedin fa-2x text-gray-500 dark:text-gray-400"></i>
+                </a>
+            </div>
+            <p>&copy; 2025 Anupam Chowdhury. Crafted with <i class="fas fa-heart text-red-500"></i> and code.</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- Mobile Menu Toggle ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // --- Theme Toggling Logic ---
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const mobileThemeToggleBtn = document.getElementById('mobile-theme-toggle');
+        const themeToggleIcon = document.getElementById('theme-toggle-icon');
+        const mobileThemeToggleIcon = document.getElementById('mobile-theme-toggle-icon');
+        const htmlEl = document.documentElement;
+
+        // Function to update the icon
+        const updateIcon = (isDarkMode) => {
+            const iconClass = isDarkMode ? 'fa-sun' : 'fa-moon';
+            themeToggleIcon.className = `fas ${iconClass} fa-lg`;
+            mobileThemeToggleIcon.className = `fas ${iconClass} fa-lg`;
+        };
+
+        // Function to handle the theme toggle
+        const toggleTheme = () => {
+            htmlEl.classList.toggle('dark');
+            const isDarkMode = htmlEl.classList.contains('dark');
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+            updateIcon(isDarkMode);
+        };
+
+        // Add event listeners to both buttons
+        themeToggleBtn.addEventListener('click', toggleTheme);
+        mobileThemeToggleBtn.addEventListener('click', toggleTheme);
+
+        // Set the initial icon state on page load
+        updateIcon(htmlEl.classList.contains('dark'));
+    </script>
+
+</body>
+</html>
+
+

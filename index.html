@@ -15,9 +15,13 @@
             font-family: 'Lato', sans-serif;
             background-color: #f8fafc; /* bg-slate-50 */
         }
-        /* Using Lora (serif) for headings for a more classic, academic look */
         h1, h2, h3, h4, .nav-link {
             font-family: 'Lora', serif;
+        }
+        /* Style for the active navigation link, updated by JavaScript */
+        .nav-link.active {
+            color: #0f172a; /* slate-900 */
+            font-weight: 600; /* semibold */
         }
     </style>
 </head>
@@ -168,5 +172,42 @@
             </main>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('nav .nav-link');
+
+            const observerOptions = {
+                root: null, // relative to the viewport
+                rootMargin: '0px',
+                threshold: 0.4 // 40% of the section must be visible to be considered "active"
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Remove active class from all nav links
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                        });
+
+                        // Find the corresponding nav link and add the active class
+                        const id = entry.target.getAttribute('id');
+                        const activeLink = document.querySelector(`nav a[href="#${id}"]`);
+                        
+                        if (activeLink) {
+                            activeLink.classList.add('active');
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+
 </body>
 </html>

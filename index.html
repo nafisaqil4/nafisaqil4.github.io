@@ -33,12 +33,18 @@
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        /* Added brand colors for icons */
+        /* Added brand colors for all icons on hover */
         .fa-envelope:hover {
             color: #DB4437; /* Google Red */
         }
         .fa-linkedin:hover {
             color: #0077B5; /* LinkedIn Blue */
+        }
+        .fa-github:hover {
+            color: #181717; /* GitHub Black */
+        }
+        .fa-graduation-cap:hover {
+            color: #4285F4; /* Google Blue */
         }
     </style>
 </head>
@@ -55,8 +61,8 @@
                     
                     <div class="flex justify-center space-x-5 mt-6 text-slate-500">
                         <a href="mailto:anupam.eee.5@gmail.com" class="transition-colors duration-300" title="Email"><i class="fas fa-envelope fa-lg"></i></a>
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-slate-700 transition-colors duration-300" title="Google Scholar"><i class="fas fa-graduation-cap fa-lg"></i></a>
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="hover:text-slate-700 transition-colors duration-300" title="GitHub"><i class="fab fa-github fa-lg"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="transition-colors duration-300" title="Google Scholar"><i class="fas fa-graduation-cap fa-lg"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="transition-colors duration-300" title="GitHub"><i class="fab fa-github fa-lg"></i></a>
                         <a href="https://www.linkedin.com/in/anupamchowdhuryeee" target="_blank" rel="noopener noreferrer" class="transition-colors duration-300" title="LinkedIn"><i class="fab fa-linkedin fa-lg"></i></a>
                     </div>
                 </div>
@@ -111,17 +117,17 @@
                     
                     <section id="education" class="content-section">
                         <h2 class="text-3xl font-bold text-slate-900 border-b border-slate-200 pb-4 mb-5">Education</h2>
-                        <div class="space-y-8">
-                            <div class="flex items-center">
-                                <img src="https://images.seeklogo.com/logo-png/42/1/international-islamic-university-chittagong-logo-png_seeklogo-425751.png" alt="IIUC Logo" class="h-16 mr-5">
+                        <div class="space-y-10">
+                            <div class="flex items-start">
+                                <img src="https://images.seeklogo.com/logo-png/42/1/international-islamic-university-chittagong-logo-png_seeklogo-425751.png" alt="IIUC Logo" class="h-16 w-16 mr-6 flex-shrink-0">
                                 <div>
                                     <h3 class="text-xl font-semibold text-slate-800">B.Sc. in Electrical and Electronic Engineering</h3>
                                     <p class="text-slate-600 font-medium">International Islamic University Chittagong (IIUC)</p>
                                     <p class="text-slate-500 text-sm">Graduated: 2024</p>
                                 </div>
                             </div>
-                            <div class="flex items-center">
-                                <img src="https://upload.wikimedia.org/wikipedia/bn/1/14/%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%B0%E0%A6%AC%E0%A6%BE%E0%A6%A8_%E0%A6%95%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%9F%E0%A6%A8%E0%A6%AE%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%9F_%E0%A6%AA%E0%A6%BE%E0%A6%AC%E0%A6%B2%E0%A6%BF%E0%A6%95_%E0%A6%B8%E0%A7%8D%E0%A6%95%E0%A7%81%E0%A6%B2_%E0%A6%93_%E0%A6%95%E0%A6%B2%E0%A7%87%E0%A6%9C_%E0%A6%B2%E0%A7%8B%E0%A6%97%E0%A7%8B.jpeg" alt="Bandarban Cantonment Public School and College Logo" class="h-16 mr-5">
+                            <div class="flex items-start">
+                                <img src="https://upload.wikimedia.org/wikipedia/bn/1/14/%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A6%E0%A6%B0%E0%A6%AC%E0%A6%BE%E0%A6%A8_%E0%A6%95%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%9F%E0%A6%A8%E0%A6%AE%E0%A7%87%E0%A6%A8%E0%A7%8D%E0%A6%9F_%E0%A6%AA%E0%A6%BE%E0%A6%AC%E0%A6%B2%E0%A6%BF%E0%A6%95_%E0%A6%B8%E0%A7%8D%E0%A6%95%E0%A7%81%E0%A6%B2_%E0%A6%93_%E0%A6%95%E0%A6%B2%E0%A7%87%E0%A6%9C_%E0%A6%B2%E0%A7%8B%E0%A6%97%E0%A7%8B.jpeg" alt="Bandarban Cantonment Public School and College Logo" class="h-16 w-16 mr-6 flex-shrink-0">
                                 <div>
                                     <h3 class="text-xl font-semibold text-slate-800">Higher Secondary Certificate (HSC)</h3>
                                     <p class="text-slate-600 font-medium">Bandarban Cantonment Public School and College</p>
@@ -257,5 +263,5 @@
         });
     </script>
 
-</body>
+</body> 
 </html>

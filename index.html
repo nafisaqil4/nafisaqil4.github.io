@@ -116,17 +116,33 @@
         }
 
         .author__urls a {
-            color: #555;
             text-decoration: none;
             font-size: 0.9rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            transition: color 0.2s;
+            transition: all 0.3s;
+            color: #555;
         }
 
         .author__urls a:hover {
-            color: #c5050c;
+            transform: translateX(3px);
+        }
+
+        .author__urls a i.fa-envelope {
+            color: #EA4335;
+        }
+
+        .author__urls a i.fa-github {
+            color: #333;
+        }
+
+        .author__urls a i.fa-linkedin {
+            color: #0A66C2;
+        }
+
+        .author__urls a:hover i {
+            opacity: 0.8;
         }
 
         .page__content {
@@ -188,12 +204,15 @@
         }
 
         .info-card-icon {
-            width: 48px;
-            height: 48px;
+            width: 64px;
+            height: 64px;
             background: white;
             border-radius: 8px;
-            padding: 8px;
+            padding: 10px;
             flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .info-card-icon img {
@@ -443,11 +462,6 @@
                     <li>
                         <a href="mailto:anupam.eee.5@gmail.com">
                             <i class="fas fa-envelope"></i> Email
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fas fa-graduation-cap"></i> Google Scholar
                         </a>
                     </li>
                     <li>

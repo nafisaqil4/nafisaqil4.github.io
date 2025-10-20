@@ -3,628 +3,864 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anupam Chowdhury - Academic Portfolio</title>
+    <title>Anupam Chowdhury - About</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Lora:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --primary-red: #b91c1c;
-            --secondary-red: #dc2626;
-            --accent-red: #ef4444;
-            --text-primary: #f9fafb;
-            --text-secondary: #d1d5db;
-            --text-muted: #9ca3af;
-            --border-color: #374151;
-            --bg-dark: #111827;
-            --bg-card: #1f2937;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 2rem;
-        }
 
         body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text-primary);
+            font-family: 'Roboto', Arial, sans-serif;
+            color: #333;
             line-height: 1.6;
-            background-color: var(--bg-dark);
-            background-image: radial-gradient(circle at top right, rgba(185, 28, 28, 0.15), transparent 40%);
-            overflow-x: hidden;
+            background-color: #ffffff;
         }
 
         .serif {
-            font-family: 'Source Serif Pro', serif;
+            font-family: 'Lora', Georgia, serif;
         }
 
-        .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
+        .masthead {
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 0;
         }
 
-        .card:hover {
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
-            transform: translateY(-2px);
-            border-color: var(--primary-red);
+        .masthead__inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
         }
 
-        .nav-link {
-            position: relative;
-            transition: all 0.2s ease;
-            border-radius: 8px;
-            color: var(--text-secondary);
+        .site-title {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #333;
+            text-decoration: none;
         }
 
-        .nav-link:hover {
-            background-color: rgba(55, 65, 81, 0.5);
-            color: var(--text-primary);
+        .nav-menu {
+            display: flex;
+            gap: 0;
+            list-style: none;
         }
 
-        .nav-link.active {
-            background-color: var(--primary-red);
-            color: white;
+        .nav-menu a {
+            padding: 0.5rem 1rem;
+            color: #555;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
         }
 
-        .nav-link.active:hover {
-             color: white;
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #c5050c;
         }
 
-        .nav-link.active::before {
-            content: '';
-            position: absolute;
-            left: -12px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 4px;
-            height: 60%;
-            background: var(--primary-red);
-            border-radius: 2px;
+        .main-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 3rem;
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 2rem;
+            height: fit-content;
+        }
+
+        .author__avatar {
+            margin-bottom: 1rem;
+        }
+
+        .author__avatar img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #f0f0f0;
+        }
+
+        .author__name {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .author__bio {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .author__urls {
+            list-style: none;
+        }
+
+        .author__urls li {
+            margin-bottom: 0.5rem;
+        }
+
+        .author__urls a {
+            color: #555;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.2s;
+        }
+
+        .author__urls a:hover {
+            color: #c5050c;
+        }
+
+        .page__content {
+            background: #fff;
         }
 
         .content-section {
             display: none;
-            animation: fadeInUp 0.5s ease forwards;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #f0f0f0;
+            margin-bottom: 2rem;
         }
 
         .content-section.active {
             display: block;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .page__title {
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .content-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #444;
+            margin-bottom: 1.5rem;
         }
 
         .section-title {
-            position: relative;
-            padding-bottom: 12px;
-            color: var(--text-primary);
+            font-size: 1.5rem;
+            color: #c5050c;
+            margin: 0 0 1.5rem 0;
+            font-weight: 500;
         }
 
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background: var(--primary-red);
-            border-radius: 2px;
+        .subsection-title {
+            font-size: 1.2rem;
+            color: #333;
+            margin: 1.5rem 0 1rem 0;
+            font-weight: 500;
+        }
+
+        .info-card {
+            background: #f9f9f9;
+            border-left: 4px solid #c5050c;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+        }
+
+        .info-card-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-card-icon {
+            width: 48px;
+            height: 48px;
+            background: white;
+            border-radius: 8px;
+            padding: 8px;
+            flex-shrink: 0;
+        }
+
+        .info-card-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .info-card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.25rem;
+        }
+
+        .info-card-subtitle {
+            color: #c5050c;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .info-card-meta {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .info-card-content {
+            color: #444;
+            line-height: 1.7;
+        }
+
+        .info-card-content ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .info-card-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .skill-category {
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .skill-category-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-category-title i {
+            color: #c5050c;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
 
         .skill-tag {
-            background: #374151;
-            border: 1px solid #4b5563;
-            color: var(--text-secondary);
-            transition: all 0.2s ease;
+            background: white;
+            border: 1px solid #ddd;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: #555;
+            transition: all 0.2s;
         }
 
         .skill-tag:hover {
-            background: var(--primary-red);
+            background: #c5050c;
             color: white;
-            border-color: var(--secondary-red);
+            border-color: #c5050c;
         }
 
-        .social-link {
-            transition: all 0.2s ease;
-            color: var(--text-muted);
+        .news-table {
+            width: 100%;
+            border-collapse: collapse;
         }
 
-        .social-link:hover {
-            color: var(--primary-red);
-            transform: translateY(-2px);
+        .news-table td {
+            padding: 0.75rem 1rem;
+            vertical-align: top;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            border-bottom: 1px solid #f0f0f0;
         }
 
-        .download-btn {
-            background: var(--primary-red);
-            transition: all 0.2s ease;
+        .news-table td:first-child {
+            font-weight: 500;
+            color: #666;
+            white-space: nowrap;
+            width: 100px;
         }
 
-        .download-btn:hover {
-            background: var(--secondary-red);
-            transform: translateY(-1px);
+        .news-table td:last-child {
+            color: #444;
         }
 
-        .timeline-item {
-            position: relative;
-            padding-left: 32px;
+        .link-style {
+            color: #4169e1;
+            text-decoration: none;
         }
 
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 8px;
-            width: 12px;
-            height: 12px;
-            background: var(--primary-red);
-            border-radius: 50%;
-            border: 3px solid var(--bg-card);
-            box-shadow: 0 0 0 3px var(--border-color);
+        .link-style:hover {
+            text-decoration: underline;
         }
 
-        .timeline-item:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            left: 5px;
-            top: 20px;
-            width: 2px;
-            height: calc(100% + 24px);
-            background: var(--border-color);
+        .highlight-text {
+            font-weight: 500;
+            color: #333;
         }
 
-        @media (max-width: 1024px) {
-            .nav-link.active::before {
-                display: none;
+        .btn-download {
+            display: inline-block;
+            padding: 0.6rem 1.5rem;
+            background-color: #c5050c;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            transition: background-color 0.2s;
+            margin-top: 1rem;
+        }
+
+        .btn-download:hover {
+            background-color: #a00409;
+        }
+
+        .project-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .project-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-icon {
+            width: 48px;
+            height: 48px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .project-icon i {
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 968px) {
+            .main-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
-        }
 
-        .profile-image {
-            border: 4px solid var(--bg-card);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+            .sidebar {
+                position: static;
+            }
+
+            .author__avatar img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .masthead__inner {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .skill-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="min-h-screen py-8 px-4 relative z-10">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-                
-                <!-- Sidebar -->
-                <aside class="lg:col-span-1">
-                    <div class="sticky top-8 space-y-6">
-                        <!-- Profile Card -->
-                        <div class="card p-8 text-center">
-                            <div class="w-32 h-32 mx-auto mb-6 relative">
-                                <img src="https://i.imgur.com/cUzbJ5e.jpeg" alt="Anupam Chowdhury" 
-                                     class="profile-image rounded-full w-full h-full object-cover">
-                            </div>
-                            
-                            <h1 class="text-2xl font-bold text-gray-50 mb-1">
-                                Anupam Chowdhury
-                            </h1>
-                            <p class="text-gray-400 font-medium mb-6">Electrical & Electronic Engineer</p>
-                            
-                            <div class="flex justify-center space-x-4 mb-6">
-                                <a href="mailto:anupam.eee.5@gmail.com" class="social-link" title="Email">
-                                    <i class="fas fa-envelope fa-lg"></i>
-                                </a>
-                                <a href="#" class="social-link" title="Google Scholar">
-                                    <i class="fas fa-graduation-cap fa-lg"></i>
-                                </a>
-                                <a href="#" class="social-link" title="GitHub">
-                                    <i class="fab fa-github fa-lg"></i>
-                                </a>
-                                <a href="https://www.linkedin.com/in/anupamchowdhuryeee" class="social-link" title="LinkedIn">
-                                    <i class="fab fa-linkedin fa-lg"></i>
-                                </a>
-                            </div>
-                            
-                            <a href="https://drive.google.com/file/d/1Il3InmOsW0NSNisX5DWeUW7KDRhrPGbx/view?usp=sharing" 
-                               class="download-btn text-white font-semibold py-3 px-6 rounded-lg inline-flex items-center space-x-2 w-full justify-center">
-                                <i class="fas fa-download"></i>
-                                <span>Download CV</span>
-                            </a>
-                        </div>
-
-                        <!-- Navigation -->
-                        <nav class="card p-6">
-                            <ul class="space-y-2">
-                                <li><a href="#about" class="nav-link flex items-center p-3 font-medium">
-                                    <i class="fas fa-user w-5 mr-3"></i>About
-                                </a></li>
-                                <li><a href="#education" class="nav-link flex items-center p-3 font-medium">
-                                    <i class="fas fa-graduation-cap w-5 mr-3"></i>Education
-                                </a></li>
-                                <li><a href="#skills" class="nav-link flex items-center p-3 font-medium">
-                                    <i class="fas fa-cogs w-5 mr-3"></i>Skills
-                                </a></li>
-                                <li><a href="#research" class="nav-link flex items-center p-3 font-medium">
-                                    <i class="fas fa-flask w-5 mr-3"></i>Research
-                                </a></li>
-                                <li><a href="#publications" class="nav-link flex items-center p-3 font-medium">
-                                    <i class="fas fa-file-alt w-5 mr-3"></i>Publications
-                                </a></li>
-                                <li><a href="#experience" class="nav-link flex items-center p-3 font-medium">
-                                    <i class="fas fa-briefcase w-5 mr-3"></i>Experience
-                                </a></li>
-                                <li><a href="#projects" class="nav-link flex items-center p-3 font-medium">
-                                    <i class="fas fa-code w-5 mr-3"></i>Projects
-                                </a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </aside>
-
-                <!-- Main Content -->
-                <main class="lg:col-span-3">
-                    <div class="card p-8 min-h-[800px]">
-
-                        <!-- About Section -->
-                        <section id="about" class="content-section">
-                            <h2 class="section-title text-3xl font-bold serif mb-8">About Me</h2>
-                            <div class="prose max-w-none text-lg leading-relaxed text-gray-300 space-y-6">
-                                <p>
-                                    My name is Anupam Chowdhury, and I have completed my B.Sc. in Electrical and Electronic Engineering (EEE) from International Islamic University Chittagong (IIUC) with a CGPA of 3.63. During my undergraduate studies, I explored advanced concepts in electronics, simulation, and computational modeling, which motivated me to apply engineering knowledge to real-world problem-solving. My undergrad thesis was on “A Micro-grid based Operational Framework for Grid Resiliency Enhancement in Bangladesh”.
-                                </p>
-                                <p>
-                                    I have hands-on experience with 3D modeling and simulation tools such as COMSOL, and I am particularly interested in Smart Grid, Optics, Quantum Computing, Materials, and emerging energy technologies. My passion for research and innovation drives me to continuously learn new skills and expand my expertise.
-                                </p>
-                                <p>
-                                    In the future, I aim to pursue a career in research and development, contributing to technological advancements and making a meaningful impact through engineering and scientific exploration.
-                                </p>
-                            </div>
-                        </section>
-                        
-                        <!-- Education Section -->
-                        <section id="education" class="content-section">
-                            <h2 class="section-title text-3xl font-bold serif mb-8">Education</h2>
-                            <div class="space-y-8">
-                                <div class="timeline-item">
-                                    <div class="card p-6">
-                                        <div class="flex items-start space-x-4">
-                                            <img src="https://www.iiuc.ac.bd/assets/footer-icon-CT4feio6.png" alt="IIUC Logo" class="w-16 h-16 object-contain bg-white rounded-md p-1">
-                                            <div class="flex-1">
-                                                <h3 class="text-xl font-bold text-gray-50 mb-1">Bachelor of Science (B.Sc.) in Electrical and Electronic Engineering</h3>
-                                                <p class="text-red-400 font-semibold mb-1">International Islamic University Chittagong (IIUC)</p>
-                                                <p class="text-gray-400 text-sm mb-3">2019 – 2023 | CGPA: 3.63/4.00</p>
-                                                <h4 class="font-semibold text-gray-200 mb-2">Activities & Achievements:</h4>
-                                                <ul class="list-disc list-inside text-gray-300 space-y-1">
-                                                    <li>Conducted an undergraduate thesis on a microgrid-based framework for grid resiliency in Bangladesh.</li>
-                                                    <li>Completed specialized coursework in Quantum Mechanics, Semiconductor Devices, and Computational Modeling.</li>
-                                                    <li>Served as a Student Ambassador (2020–2022), organizing workshops and seminars.</li>
-                                                    <li>Active EEE Club Member, arranging robotics training and MATLAB programming sessions.</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="timeline-item">
-                                    <div class="card p-6">
-                                        <div class="flex items-start space-x-4">
-                                             <img src="https://www.bbcpsc.edu.bd/favicon.ico" alt="BCPSC Logo" class="w-16 h-16 object-contain bg-white rounded-md p-1">
-                                             <div class="flex-1">
-                                                <h3 class="text-xl font-bold text-gray-50 mb-1">Higher Secondary Certificate (HSC)</h3>
-                                                <p class="text-red-400 font-semibold mb-1">Bandarban Cantonment Public School & College</p>
-                                                <p class="text-gray-400 text-sm mb-3">2016 – 2018 | GPA: 3.67/5.00</p>
-                                                 <h4 class="font-semibold text-gray-200 mb-2">Activities & Achievements:</h4>
-                                                <ul class="list-disc list-inside text-gray-300 space-y-1">
-                                                   <li>Developed a strong academic background in Physics, Chemistry, Mathematics, and ICT.</li>
-                                                   <li>Participated in science fairs and group projects, strengthening problem-solving skills.</li>
-                                                   <li>Engaged in debates and cultural programs, enhancing communication abilities.</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                 <div class="timeline-item">
-                                    <div class="card p-6">
-                                        <div class="flex items-start space-x-4">
-                                            <img src="https://www.pmhs.edu.bd/uploads/frontend/images/fav_icon1.png" alt="PMHS Logo" class="w-16 h-16 object-contain bg-white rounded-md p-1">
-                                            <div class="flex-1">
-                                                <h3 class="text-xl font-bold text-gray-50 mb-1">Secondary School Certificate (SSC)</h3>
-                                                <p class="text-red-400 font-semibold mb-1">Poapara Govt. Model High School</p>
-                                                <p class="text-gray-400 text-sm mb-3">2013 – 2015</p>
-                                                 <h4 class="font-semibold text-gray-200 mb-2">Activities & Achievements:</h4>
-                                                <ul class="list-disc list-inside text-gray-300 space-y-1">
-                                                   <li>Served as a Scout Team Leader under the United Nations Volunteer initiative.</li>
-                                                   <li>Represented school in local-level academic competitions.</li>
-                                                   <li>Built a solid academic foundation in Mathematics, Science, and ICT.</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
-                        <!-- Skills Section -->
-                        <section id="skills" class="content-section">
-                            <h2 class="section-title text-3xl font-bold serif mb-8">Skills</h2>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                <div class="card p-6">
-                                    <h3 class="text-xl font-semibold text-gray-50 mb-4 flex items-center">
-                                        <i class="fas fa-code text-red-400 mr-3"></i>Programming Skills
-                                    </h3>
-                                    <div class="flex flex-wrap gap-2">
-                                        <span class="skill-tag px-3 py-1 rounded-full text-sm font-medium">MATLAB</span>
-                                        <span class="skill-tag px-3 py-1 rounded-full text-sm font-medium">C++</span>
-                                        <span class="skill-tag px-3 py-1 rounded-full text-sm font-medium">Python</span>
-                                    </div>
-                                </div>
-                                <div class="card p-6">
-                                    <h3 class="text-xl font-semibold text-gray-50 mb-4 flex items-center">
-                                        <i class="fas fa-cogs text-red-400 mr-3"></i>Simulation & CAD
-                                    </h3>
-                                    <div class="flex flex-wrap gap-2">
-                                        <span class="skill-tag px-3 py-1 rounded-full text-sm font-medium">COMSOL</span>
-                                        <span class="skill-tag px-3 py-1 rounded-full text-sm font-medium">Vesta</span>
-                                        <span class="skill-tag px-3 py-1 rounded-full text-sm font-medium">Burai</span>
-                                        <span class="skill-tag px-3 py-1 rounded-full text-sm font-medium">Cadence</span>
-                                        <span class="skill-tag px-3 py-1 rounded-full text-sm font-medium">Quantum Espresso</span>
-                                        <span class="skill-tag px-3 py-1 rounded-full text-sm font-medium">Mathematica</span>
-                                    </div>
-                                </div>
-                                <div class="card p-6">
-                                    <h3 class="text-xl font-semibold text-gray-50 mb-4 flex items-center">
-                                        <i class="fas fa-paint-brush text-red-400 mr-3"></i>Image Processing
-                                    </h3>
-                                    <div class="flex flex-wrap gap-2">
-                                        <span class="skill-tag px-3 py-1 rounded-full text-sm font-medium">Canva</span>
-                                        <span class="skill-tag px-3 py-1 rounded-full text-sm font-medium">Blender</span>
-                                    </div>
-                                </div>
-                                <div class="card p-6">
-                                    <h3 class="text-xl font-semibold text-gray-50 mb-4 flex items-center">
-                                        <i class="fas fa-tools text-red-400 mr-3"></i>Workflow & Development
-                                    </h3>
-                                    <div class="flex flex-wrap gap-2">
-                                        <span class="skill-tag px-3 py-1 rounded-full text-sm font-medium">LaTeX</span>
-                                        <span class="skill-tag px-3 py-1 rounded-full text-sm font-medium">Excel</span>
-                                        <span class="skill-tag px-3 py-1 rounded-full text-sm font-medium">Microsoft Office</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
-                        <!-- Research Section -->
-                        <section id="research" class="content-section">
-                            <h2 class="section-title text-3xl font-bold serif mb-8">Research Experience</h2>
-                            <div class="space-y-8">
-                                <div class="card p-8 border-l-4 border-red-600">
-                                    <div class="flex items-start space-x-4 mb-4">
-                                        <div class="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center">
-                                            <i class="fas fa-graduation-cap text-red-400 text-xl"></i>
-                                        </div>
-                                        <div>
-                                            <h3 class="text-xl font-bold text-gray-50">Undergraduate Thesis: Micro-grid Framework for Grid Resiliency</h3>
-                                            <p class="text-red-400 font-medium">Advisor: Assoc. Prof. Engr. Md. Rashidul Islam</p>
-                                        </div>
-                                    </div>
-                                    <p class="text-gray-300 leading-relaxed">
-                                        Investigated micro-grid frameworks to enhance Bangladesh's grid resilience. Modeled and simulated PV systems, bidirectional battery storage (BESS), and advanced inverter control using dq-transformation in MATLAB/Simulink. The proposed framework significantly improved the resilience index under simulated fault conditions.
-                                    </p>
-                                </div>
-                                
-                                <div class="card p-8 border-l-4 border-red-600">
-                                    <div class="flex items-start space-x-4 mb-4">
-                                        <div class="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center">
-                                            <i class="fas fa-flask text-red-400 text-xl"></i>
-                                        </div>
-                                        <div>
-                                            <h3 class="text-xl font-bold text-gray-50">Research Assistantship | Mahdy's Research Academy</h3>
-                                            <p class="text-red-400 font-medium">Advisor: Dr. Mahady Rahman | 2024 - Present</p>
-                                        </div>
-                                    </div>
-                                    <ul class="space-y-3 text-gray-300 list-disc list-inside">
-                                        <li>Studied wave-based quantum mechanics and density functional theory (DFT).</li>
-                                        <li>Gained hands-on experience with COMSOL, Quantum Espresso, and Mathematica.</li>
-                                        <li>Collaborated on projects involving simulation replication and interpretation of results.</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </section>
-
-                        <!-- Publications Section -->
-                        <section id="publications" class="content-section">
-                            <h2 class="section-title text-3xl font-bold serif mb-8">Publications & Manuscripts</h2>
-                            <div class="card p-8 border-l-4 border-red-600">
-                                <div class="flex items-start space-x-4 mb-6">
-                                    <div class="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center">
-                                        <i class="fas fa-file-alt text-red-400 text-xl"></i>
-                                    </div>
-                                    <div>
-                                        <h3 class="text-xl font-bold text-gray-50">Manuscript in Preparation</h3>
-                                        <p class="text-red-400 font-medium">Preparing for peer-reviewed journal submission</p>
-                                    </div>
-                                </div>
-                                <div class="bg-gray-700 border-l-4 border-red-500 p-6 rounded-r-lg">
-                                    <h4 class="font-semibold text-gray-100 mb-2">Working Title:</h4>
-                                    <p class="italic text-gray-200 font-medium">"A Micro-grid based Operational Framework for Grid Resiliency Enhancement in Bangladesh"</p>
-                                </div>
-                            </div>
-                        </section>
-                        
-                        <!-- Experience Section -->
-                        <section id="experience" class="content-section">
-                            <h2 class="section-title text-3xl font-bold serif mb-8">Professional Experience</h2>
-                            <div class="space-y-8">
-                                <div class="timeline-item">
-                                    <div class="card p-6">
-                                        <div class="flex items-start space-x-4 mb-4">
-                                            <div class="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center">
-                                                <i class="fas fa-industry text-red-400 text-lg"></i>
-                                            </div>
-                                            <div>
-                                                <h3 class="text-xl font-bold text-gray-50">Intern</h3>
-                                                <p class="text-red-400 font-medium">General Electric Manufacturing Company Ltd. (GEMCO)</p>
-                                                <p class="text-gray-400 text-sm">2024</p>
-                                            </div>
-                                        </div>
-                                        <p class="text-gray-300 leading-relaxed mb-4">
-                                            Gained hands-on experience in the manufacturing processes and quality control of electrical equipment, including transformers and switchgears.
-                                        </p>
-                                        <div class="flex flex-wrap gap-2">
-                                            <span class="skill-tag px-2 py-1 rounded-full text-xs">Manufacturing</span>
-                                            <span class="skill-tag px-2 py-1 rounded-full text-xs">Quality Control</span>
-                                            <span class="skill-tag px-2 py-1 rounded-full text-xs">Transformers</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="timeline-item">
-                                    <div class="card p-6">
-                                        <div class="flex items-start space-x-4 mb-4">
-                                            <div class="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center">
-                                                <i class="fas fa-chalkboard-teacher text-red-400 text-lg"></i>
-                                            </div>
-                                            <div>
-                                                <h3 class="text-xl font-bold text-gray-50">Senior Lecturer</h3>
-                                                <p class="text-red-400 font-medium">Science Coaching Center</p>
-                                                <p class="text-gray-400 text-sm">2022 - 2025</p>
-                                            </div>
-                                        </div>
-                                        <p class="text-gray-300 leading-relaxed mb-4">
-                                            Mentored and instructed high school students in Physics and Mathematics, developing skills in simplifying complex technical concepts.
-                                        </p>
-                                        <div class="flex flex-wrap gap-2">
-                                            <span class="skill-tag px-2 py-1 rounded-full text-xs">Physics</span>
-                                            <span class="skill-tag px-2 py-1 rounded-full text-xs">Mathematics</span>
-                                            <span class="skill-tag px-2 py-1 rounded-full text-xs">Mentoring</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
-                        <!-- Projects Section -->
-                        <section id="projects" class="content-section">
-                            <h2 class="section-title text-3xl font-bold serif mb-8">Selected Engineering Projects</h2>
-                            <div class="grid gap-6 md:grid-cols-1">
-                                <div class="card p-6">
-                                    <div class="flex items-start space-x-4 mb-4">
-                                        <div class="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center">
-                                            <i class="fas fa-heartbeat text-red-400 text-lg"></i>
-                                        </div>
-                                        <div>
-                                            <h3 class="text-xl font-bold text-gray-50">
-                                                Biomedical ECG Signal Enhancement using FIR Filtering
-                                            </h3>
-                                            <p class="text-gray-400 text-sm">Signal Processing | MATLAB</p>
-                                        </div>
-                                    </div>
-                                    <p class="text-gray-300 leading-relaxed">
-                                        Designed and implemented a band-pass FIR filter to remove noise from raw ECG data, improving signal quality for biomedical analysis.
-                                    </p>
-                                </div>
-                                
-                                <div class="card p-6">
-                                    <div class="flex items-start space-x-4 mb-4">
-                                        <div class="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center">
-                                            <i class="fas fa-traffic-light text-yellow-400 text-lg"></i>
-                                        </div>
-                                        <div>
-                                            <h3 class="text-xl font-bold text-gray-50">
-                                                Intelligent Traffic Signal Optimization using Arduino
-                                            </h3>
-                                            <p class="text-gray-400 text-sm">Embedded Systems | IoT</p>
-                                        </div>
-                                    </div>
-                                    <p class="text-gray-300 leading-relaxed">
-                                        Developed an automated traffic control system using an Arduino and IR sensors to minimize vehicle waiting times and reduce congestion.
-                                    </p>
-                                </div>
-                                
-                                <div class="card p-6">
-                                    <div class="flex items-start space-x-4 mb-4">
-                                        <div class="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center">
-                                            <i class="fas fa-microchip text-indigo-400 text-lg"></i>
-                                        </div>
-                                        <div>
-                                            <h3 class="text-xl font-bold text-gray-50">
-                                                CMOS Half-Adder Design in Cadence Virtuoso
-                                            </h3>
-                                            <p class="text-gray-400 text-sm">VLSI Design | Digital Circuits</p>
-                                        </div>
-                                    </div>
-                                    <p class="text-gray-300 leading-relaxed">
-                                        Constructed and simulated a half-adder circuit using CMOS technology, validating the logic behavior in Cadence Virtuoso.
-                                    </p>
-                                </div>
-                            </div>
-                        </section>
-                    </div>
-                </main>
-            </div>
+    <!-- Header Navigation -->
+    <div class="masthead">
+        <div class="masthead__inner">
+            <a href="#about" class="site-title">Home</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#education" class="nav-link">Education</a></li>
+                    <li><a href="#skills" class="nav-link">Skills</a></li>
+                    <li><a href="#research" class="nav-link">Research</a></li>
+                    <li><a href="#publications" class="nav-link">Publications</a></li>
+                    <li><a href="#experience" class="nav-link">Experience</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                </ul>
+            </nav>
         </div>
     </div>
 
+    <!-- Main Content Area -->
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="author__avatar">
+                <img src="https://i.imgur.com/cUzbJ5e.jpeg" alt="Anupam Chowdhury">
+            </div>
+            <div class="author__content">
+                <h3 class="author__name">Anupam Chowdhury</h3>
+                <p class="author__bio">B.Sc. in Electrical and Electronic Engineering<br>International Islamic University Chittagong</p>
+            </div>
+            <div class="author__urls-wrapper">
+                <ul class="author__urls">
+                    <li>
+                        <a href="mailto:anupam.eee.5@gmail.com">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-graduation-cap"></i> Google Scholar
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/anupamchowdhuryeee">
+                            <i class="fab fa-linkedin"></i> LinkedIn
+                        </a>
+                    </li>
+                </ul>
+                <a href="https://drive.google.com/file/d/1Il3InmOsW0NSNisX5DWeUW7KDRhrPGbx/view?usp=sharing" class="btn-download">
+                    <i class="fas fa-download"></i> Download CV
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="page__content">
+            <!-- About Section -->
+            <article id="about" class="content-section active">
+                <header>
+                    <h1 class="page__title">About</h1>
+                </header>
+
+                <section>
+                    <p class="content-text" style="font-size: 1.05rem; text-align: justify; color: #2d3748;">
+                        <span style="font-size: 1.15rem; font-weight: 600; color: #b91c1c;">Hi!</span> I'm <strong style="color: #1a202c;">Anupam Chowdhury</strong>, a passionate electrical engineer with a deep fascination for the intersection of renewable energy, quantum mechanics, and advanced computational modeling. I graduated with a <strong style="color: #1a202c;">B.Sc. in Electrical and Electronic Engineering</strong> from <em style="color: #4a5568;">International Islamic University Chittagong (IIUC)</em> with a CGPA of <strong style="color: #b91c1c;">3.63/4.00</strong>, where I developed a strong foundation in both theoretical and applied engineering disciplines.
+                    </p>
+
+                    <div style="background: linear-gradient(135deg, #fee2e2 0%, #fef2f2 100%); padding: 1.8rem; border-left: 5px solid #b91c1c; border-radius: 10px; margin: 2rem 0; box-shadow: 0 2px 8px rgba(185, 28, 28, 0.15);">
+                        <h3 style="color: #991b1b; font-size: 1.3rem; margin-bottom: 1rem; font-weight: 700;">
+                            <i class="fas fa-lightbulb" style="margin-right: 0.5rem; color: #dc2626;"></i>Research Interests
+                        </h3>
+                        <p class="content-text" style="margin-bottom: 0.8rem; color: #374151; font-weight: 500;">
+                            My research interests span across multiple cutting-edge domains:
+                        </p>
+                        <ul style="line-height: 2; color: #1f2937; margin-left: 1.5rem;">
+                            <li><strong style="color: #991b1b;">Smart Grid Technologies:</strong> Developing resilient microgrid frameworks for sustainable energy distribution</li>
+                            <li><strong style="color: #991b1b;">Computational Electromagnetics:</strong> Advanced modeling and simulation of electromagnetic phenomena</li>
+                            <li><strong style="color: #991b1b;">Quantum Computing & Materials Science:</strong> Exploring quantum mechanics applications in next-generation technologies</li>
+                            <li><strong style="color: #991b1b;">Renewable Energy Systems:</strong> Photovoltaic systems, battery storage, and energy optimization</li>
+                        </ul>
+                    </div>
+
+                    <p class="content-text" style="font-size: 1.05rem; text-align: justify; color: #2d3748;">
+                        Throughout my academic journey, I've gained extensive hands-on experience with industry-standard simulation tools including <strong style="color: #1a202c;">COMSOL Multiphysics</strong>, <strong style="color: #1a202c;">Quantum Espresso</strong>, <strong style="color: #1a202c;">MATLAB/Simulink</strong>, and <strong style="color: #1a202c;">Cadence Virtuoso</strong>. My undergraduate thesis, <em style="color: #4a5568;">"A Micro-grid based Operational Framework for Grid Resiliency Enhancement in Bangladesh,"</em> involved sophisticated modeling of PV systems, bidirectional battery energy storage systems (BESS), and advanced inverter control using dq-transformation techniques. This work demonstrated significant improvements in grid resilience under various fault conditions.
+                    </p>
+
+                    <p class="content-text" style="font-size: 1.05rem; text-align: justify; color: #2d3748;">
+                        Currently, I'm expanding my expertise as a <strong style="color: #1a202c;">Research Assistant</strong> at <em style="color: #4a5568;">Mahdy's Research Academy</em>, where I'm exploring wave-based quantum mechanics and density functional theory (DFT). This experience is sharpening my skills in computational modeling and deepening my understanding of quantum phenomena at the atomic scale.
+                    </p>
+
+                    <div style="background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%); padding: 1.8rem; border-left: 5px solid #1e40af; border-radius: 10px; margin: 2rem 0; box-shadow: 0 2px 8px rgba(30, 64, 175, 0.15);">
+                        <h3 style="color: #1e3a8a; font-size: 1.3rem; margin-bottom: 1rem; font-weight: 700;">
+                            <i class="fas fa-rocket" style="margin-right: 0.5rem; color: #2563eb;"></i>Future Aspirations
+                        </h3>
+                        <p class="content-text" style="margin-bottom: 0; color: #1f2937; line-height: 1.8;">
+                            I'm eager to pursue <strong style="color: #1e3a8a;">graduate studies</strong> in electrical engineering or applied physics, with the goal of contributing to groundbreaking research in renewable energy integration, quantum computing applications, and advanced materials. My ultimate vision is to bridge the gap between theoretical innovation and practical implementation, creating technologies that address real-world challenges in energy sustainability and computational advancement.
+                        </p>
+                    </div>
+
+                    <p class="content-text" style="font-size: 1.05rem; text-align: justify; font-style: italic; color: #374151; border-left: 4px solid #9ca3af; padding-left: 1.2rem; background: #f9fafb; padding: 1.2rem 1.2rem 1.2rem 1.5rem; border-radius: 6px; margin-top: 2rem;">
+                        I believe that the future of engineering lies at the intersection of multiple disciplines, and I'm committed to continuous learning and exploration. Whether it's developing more efficient energy systems, exploring quantum phenomena, or creating innovative solutions through computational modeling, I'm driven by curiosity and a passion for making a meaningful impact through science and engineering.
+                    </p>
+                </section>
+            </article>
+
+            <!-- Education Section -->
+            <article id="education" class="content-section">
+                <header>
+                    <h1 class="section-title">Education</h1>
+                </header>
+
+                <div class="info-card">
+                    <div class="info-card-header">
+                        <div class="info-card-icon">
+                            <img src="https://www.iiuc.ac.bd/assets/footer-icon-CT4feio6.png" alt="IIUC Logo">
+                        </div>
+                        <div>
+                            <div class="info-card-title">Bachelor of Science (B.Sc.) in Electrical and Electronic Engineering</div>
+                            <div class="info-card-subtitle">International Islamic University Chittagong (IIUC)</div>
+                            <div class="info-card-meta">2019 – 2023 | CGPA: 3.63/4.00</div>
+                        </div>
+                    </div>
+                    <div class="info-card-content">
+                        <strong>Activities & Achievements:</strong>
+                        <ul>
+                            <li>Conducted an undergraduate thesis on a microgrid-based framework for grid resiliency in Bangladesh.</li>
+                            <li>Completed specialized coursework in Quantum Mechanics, Semiconductor Devices, and Computational Modeling.</li>
+                            <li>Served as a Student Ambassador (2020–2022), organizing workshops and seminars.</li>
+                            <li>Active EEE Club Member, arranging robotics training and MATLAB programming sessions.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-header">
+                        <div class="info-card-icon">
+                            <img src="https://www.bbcpsc.edu.bd/favicon.ico" alt="BCPSC Logo">
+                        </div>
+                        <div>
+                            <div class="info-card-title">Higher Secondary Certificate (HSC)</div>
+                            <div class="info-card-subtitle">Bandarban Cantonment Public School & College</div>
+                            <div class="info-card-meta">2016 – 2018 | GPA: 3.67/5.00</div>
+                        </div>
+                    </div>
+                    <div class="info-card-content">
+                        <strong>Activities & Achievements:</strong>
+                        <ul>
+                            <li>Developed a strong academic background in Physics, Chemistry, Mathematics, and ICT.</li>
+                            <li>Participated in science fairs and group projects, strengthening problem-solving skills.</li>
+                            <li>Engaged in debates and cultural programs, enhancing communication abilities.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-header">
+                        <div class="info-card-icon">
+                            <img src="https://www.pmhs.edu.bd/uploads/frontend/images/fav_icon1.png" alt="PMHS Logo">
+                        </div>
+                        <div>
+                            <div class="info-card-title">Secondary School Certificate (SSC)</div>
+                            <div class="info-card-subtitle">Poapara Govt. Model High School</div>
+                            <div class="info-card-meta">2013 – 2015</div>
+                        </div>
+                    </div>
+                    <div class="info-card-content">
+                        <strong>Activities & Achievements:</strong>
+                        <ul>
+                            <li>Served as a Scout Team Leader under the United Nations Volunteer initiative.</li>
+                            <li>Represented school in local-level academic competitions.</li>
+                            <li>Built a solid academic foundation in Mathematics, Science, and ICT.</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Skills Section -->
+            <article id="skills" class="content-section">
+                <header>
+                    <h1 class="section-title">Skills</h1>
+                </header>
+
+                <div class="skill-grid">
+                    <div class="skill-category">
+                        <div class="skill-category-title">
+                            <i class="fas fa-code"></i> Programming Skills
+                        </div>
+                        <div class="skill-tags">
+                            <span class="skill-tag">MATLAB</span>
+                            <span class="skill-tag">C++</span>
+                            <span class="skill-tag">Python</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <div class="skill-category-title">
+                            <i class="fas fa-cogs"></i> Simulation & CAD
+                        </div>
+                        <div class="skill-tags">
+                            <span class="skill-tag">COMSOL</span>
+                            <span class="skill-tag">Vesta</span>
+                            <span class="skill-tag">Burai</span>
+                            <span class="skill-tag">Cadence</span>
+                            <span class="skill-tag">Quantum Espresso</span>
+                            <span class="skill-tag">Mathematica</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <div class="skill-category-title">
+                            <i class="fas fa-paint-brush"></i> Image Processing
+                        </div>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Canva</span>
+                            <span class="skill-tag">Blender</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <div class="skill-category-title">
+                            <i class="fas fa-tools"></i> Workflow & Development
+                        </div>
+                        <div class="skill-tags">
+                            <span class="skill-tag">LaTeX</span>
+                            <span class="skill-tag">Excel</span>
+                            <span class="skill-tag">Microsoft Office</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Research Section -->
+            <article id="research" class="content-section">
+                <header>
+                    <h1 class="section-title">Research Experience</h1>
+                </header>
+
+                <div class="info-card">
+                    <div class="info-card-header">
+                        <div class="info-card-icon">
+                            <i class="fas fa-flask" style="font-size: 2rem; color: #c5050c;"></i>
+                        </div>
+                        <div>
+                            <div class="info-card-title">Research Assistant</div>
+                            <div class="info-card-subtitle">Mahdy's Research Academy</div>
+                            <div class="info-card-meta">Advisor: Dr. Mahady Rahman | 2024 - Present</div>
+                        </div>
+                    </div>
+                    <div class="info-card-content">
+                        <ul>
+                            <li>Studied wave-based quantum mechanics and density functional theory (DFT).</li>
+                            <li>Gained hands-on experience with COMSOL, Quantum Espresso, and Mathematica.</li>
+                            <li>Collaborated on projects involving simulation replication and interpretation of results.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-header">
+                        <div class="info-card-icon">
+                            <i class="fas fa-graduation-cap" style="font-size: 2rem; color: #c5050c;"></i>
+                        </div>
+                        <div>
+                            <div class="info-card-title">Undergraduate Thesis: Micro-grid Framework for Grid Resiliency</div>
+                            <div class="info-card-subtitle">Advisor: Assoc. Prof. Engr. Md. Rashidul Islam</div>
+                            <div class="info-card-meta">2022 - 2023</div>
+                        </div>
+                    </div>
+                    <div class="info-card-content">
+                        Investigated micro-grid frameworks to enhance Bangladesh's grid resilience. Modeled and simulated PV systems, bidirectional battery storage (BESS), and advanced inverter control using dq-transformation in MATLAB/Simulink. The proposed framework significantly improved the resilience index under simulated fault conditions.
+                    </div>
+                </div>
+            </article>
+
+            <!-- Publications Section -->
+            <article id="publications" class="content-section">
+                <header>
+                    <h1 class="section-title">Publications & Manuscripts</h1>
+                </header>
+
+                <div class="info-card">
+                    <div class="info-card-header">
+                        <div class="info-card-icon">
+                            <i class="fas fa-file-alt" style="font-size: 2rem; color: #c5050c;"></i>
+                        </div>
+                        <div>
+                            <div class="info-card-title">Manuscript in Preparation</div>
+                            <div class="info-card-subtitle">Preparing for peer-reviewed journal submission</div>
+                        </div>
+                    </div>
+                    <div class="info-card-content">
+                        <strong>Working Title:</strong><br>
+                        <em>"A Micro-grid based Operational Framework for Grid Resiliency Enhancement in Bangladesh"</em>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Experience Section -->
+            <article id="experience" class="content-section">
+                <header>
+                    <h1 class="section-title">Professional Experience</h1>
+                </header>
+
+                <div class="info-card">
+                    <div class="info-card-header">
+                        <div class="info-card-icon">
+                            <i class="fas fa-industry" style="font-size: 2rem; color: #c5050c;"></i>
+                        </div>
+                        <div>
+                            <div class="info-card-title">Intern</div>
+                            <div class="info-card-subtitle">General Electric Manufacturing Company Ltd. (GEMCO)</div>
+                            <div class="info-card-meta">2024</div>
+                        </div>
+                    </div>
+                    <div class="info-card-content">
+                        Gained hands-on experience in the manufacturing processes and quality control of electrical equipment, including transformers and switchgears.
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-header">
+                        <div class="info-card-icon">
+                            <i class="fas fa-chalkboard-teacher" style="font-size: 2rem; color: #c5050c;"></i>
+                        </div>
+                        <div>
+                            <div class="info-card-title">Senior Lecturer</div>
+                            <div class="info-card-subtitle">Science Coaching Center</div>
+                            <div class="info-card-meta">2022 - 2025</div>
+                        </div>
+                    </div>
+                    <div class="info-card-content">
+                        Mentored and instructed high school students in Physics and Mathematics, developing skills in simplifying complex technical concepts.
+                    </div>
+                </div>
+            </article>
+
+            <!-- Projects Section -->
+            <article id="projects" class="content-section">
+                <header>
+                    <h1 class="section-title">Selected Engineering Projects</h1>
+                </header>
+
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-heartbeat" style="color: #c5050c;"></i>
+                            </div>
+                            <div>
+                                <div class="info-card-title">Biomedical ECG Signal Enhancement using FIR Filtering</div>
+                                <div class="info-card-meta">Signal Processing | MATLAB</div>
+                            </div>
+                        </div>
+                        <div class="info-card-content">
+                            Designed and implemented a band-pass FIR filter to remove noise from raw ECG data, improving signal quality for biomedical analysis.
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-traffic-light" style="color: #fbbf24;"></i>
+                            </div>
+                            <div>
+                                <div class="info-card-title">Intelligent Traffic Signal Optimization using Arduino</div>
+                                <div class="info-card-meta">Embedded Systems | IoT</div>
+                            </div>
+                        </div>
+                        <div class="info-card-content">
+                            Developed an automated traffic control system using an Arduino and IR sensors to minimize vehicle waiting times and reduce congestion.
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-microchip" style="color: #6366f1;"></i>
+                            </div>
+                            <div>
+                                <div class="info-card-title">CMOS Half-Adder Design in Cadence Virtuoso</div>
+                                <div class="info-card-meta">VLSI Design | Digital Circuits</div>
+                            </div>
+                        </div>
+                        <div class="info-card-content">
+                            Constructed and simulated a half-adder circuit using CMOS technology, validating the logic behavior in Cadence Virtuoso.
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </main>
+    </div>
+
+    <footer style="text-align: center; padding: 2rem; color: #666; font-size: 0.85rem; border-top: 1px solid #e0e0e0; margin-top: 3rem;">
+        © 2025 Anupam Chowdhury. All rights reserved.
+    </footer>
+
     <script>
+        // Smooth scrolling and section navigation
         document.addEventListener('DOMContentLoaded', () => {
-            const navLinks = document.querySelectorAll('nav .nav-link');
-            const contentSections = document.querySelectorAll('main .content-section');
-            const mainContentContainer = document.querySelector('main > div');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('.content-section');
 
-            function showSection(targetId, shouldScroll = false) {
-                const sectionId = targetId ? targetId.substring(1) : 'about';
-                const targetSection = document.getElementById(sectionId) || document.getElementById('about');
-
-                contentSections.forEach(section => section.classList.remove('active'));
+            function showSection(targetId) {
+                // Remove active class from all sections and nav links
+                sections.forEach(section => section.classList.remove('active'));
                 navLinks.forEach(link => link.classList.remove('active'));
 
+                // Add active class to target section
+                const targetSection = document.querySelector(targetId);
                 if (targetSection) {
                     targetSection.classList.add('active');
                 }
-                
-                const activeLink = document.querySelector(`nav a[href="#${sectionId}"]`);
+
+                // Add active class to corresponding nav link
+                const activeLink = document.querySelector(`.nav-link[href="${targetId}"]`);
                 if (activeLink) {
                     activeLink.classList.add('active');
                 }
 
-                if (shouldScroll) {
-                    const topPos = mainContentContainer.offsetTop;
-                    window.scrollTo({
-                        top: topPos - 32,
-                        behavior: 'smooth'
-                    });
-                }
+                // Scroll to top of main content
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
             }
 
+            // Handle navigation clicks
             navLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
                     const targetId = link.getAttribute('href');
-                    if (window.location.hash !== targetId) {
-                         history.pushState(null, null, targetId); 
-                    }
-                    showSection(targetId, true);
+                    showSection(targetId);
+                    
+                    // Update URL hash
+                    history.pushState(null, null, targetId);
                 });
             });
-            
+
+            // Handle browser back/forward buttons
             window.addEventListener('popstate', () => {
-                showSection(window.location.hash);
+                const hash = window.location.hash || '#about';
+                showSection(hash);
             });
 
-            showSection(window.location.hash || '#about');
+            // Show initial section based on URL hash
+            const initialHash = window.location.hash || '#about';
+            showSection(initialHash);
         });
     </script>
-
-</body> 
+</body>
 </html>
-
